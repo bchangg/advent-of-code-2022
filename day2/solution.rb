@@ -41,40 +41,50 @@ rock_paper_scissors_input = File.new('input.txt')
 
 # ----------------------------------------------------------------------------
 # Part 2
+
+ROCK = :A
+PAPER = :B
+SCISSORS = :C
+
+LOSE = :X
+DRAW = :Y
+WIN = :Z
+
 choice_weightss = {
-  A: 1,
-  B: 2,
-  C: 3
-}
+  ROCK => 1,
+  PAPER => 2,
+  SCISSORS => 3
+}.freeze
 
 win_lose_draw_points_awarded = {
-  X: 0,
-  Y: 1,
-  Z: 2
-}
+  LOSE => 0,
+  DRAW => 3,
+  WIN => 6
+}.freeze
 
 strategyy = {
-  A: {
-    X: :C,
-    Y: :A,
-    Z: :B
+  ROCK => {
+    LOSE => SCISSORS,
+    DRAW => ROCK,
+    WIN => PAPER
   },
-  B: {
-    X: :A,
-    Y: :B,
-    Z: :C
+  PAPER => {
+    LOSE => ROCK,
+    DRAW => PAPER,
+    WIN => SCISSORS
   },
-  C: {
-    X: :B,
-    Y: :C,
-    Z: :A
+  SCISSORS => {
+    LOSE => PAPER,
+    DRAW => SCISSORS,
+    WIN => ROCK
   }
 }
+
+puts strategyy
 
 totall = 0
 
 while (input = rock_paper_scissors_input.gets)
-  input = rock_paper_scissors_input.gets
   other_choice, win_lose_strategy = input.chomp.split(' ').map(&:to_sym)
 
   my_choice = strategyy[other_choice][win_lose_strategy]
