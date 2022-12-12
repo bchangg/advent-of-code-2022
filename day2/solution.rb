@@ -2,42 +2,42 @@ require 'pp'
 
 rock_paper_scissors_input = File.new('input.txt')
 
-# # Part 1
-# choice_weights = {
-#   X: 1,
-#   Y: 2,
-#   Z: 3
-# }
+# Part 1
+choice_weights = {
+  X: 1,
+  Y: 2,
+  Z: 3
+}
 
-# strategy = {
-#   A: {
-#     X: 3,
-#     Y: 6,
-#     Z: 0
-#   },
-#   B: {
-#     X: 0,
-#     Y: 3,
-#     Z: 6
-#   },
-#   C: {
-#     X: 6,
-#     Y: 0,
-#     Z: 3
-#   }
-# }
+strategy = {
+  A: {
+    X: 3,
+    Y: 6,
+    Z: 0
+  },
+  B: {
+    X: 0,
+    Y: 3,
+    Z: 6
+  },
+  C: {
+    X: 6,
+    Y: 0,
+    Z: 3
+  }
+}
 
-# total = 0
+total = 0
 
-# while (input = rock_paper_scissors_input.gets)
-#   other_choice, my_choice = input.chomp.split(' ').map(&:to_sym)
+while (input = rock_paper_scissors_input.gets)
+  other_choice, my_choice = input.chomp.split(' ').map(&:to_sym)
 
-#   current_round_total = choice_weights[my_choice] + strategy[other_choice][my_choice]
+  current_round_total = choice_weights[my_choice] + strategy[other_choice][my_choice]
 
-#   total += current_round_total
-# end
+  total += current_round_total
+end
 
-# pp "Part 1: #{total}"
+pp "Part 1: #{total}"
 
 # ----------------------------------------------------------------------------
 # Part 2
