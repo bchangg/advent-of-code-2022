@@ -1,4 +1,4 @@
-require 'pp'
+# frozen_string_literal: true
 
 rock_paper_scissors_input = File.new('input.txt')
 
