@@ -5,23 +5,15 @@ total = 0
 while (line = input.gets)
   line = line.chomp
   first, second = line.split(',')
-  first_start, first_end = first.split('-')
-  second_start, second_end = second.split('-')
+  first_start, first_end = first.split('-').map(&:to_i)
+  second_start, second_end = second.split('-').map(&:to_i)
 
-  puts '-----------------------'
-  pp [first_start, first_end]
-  pp [second_start, second_end]
-
-  if first_start >= second_start
-    if first_end <= second_end
-      total += 1
-      puts 'first is in second'
-    end
-  elsif second_start >= first_start
-    if second_end <= first_end
-      total += 1
-      puts 'second is in first'
-    end
+  if first_start == second_start
+    total += 1 if first_end <= second_end || second_end <= first_end
+  elsif first_start > second_start
+    total += 1 if first_end <= second_end
+  elsif second_start > first_start
+    total += 1 if second_end <= first_end
   end
 end
 
